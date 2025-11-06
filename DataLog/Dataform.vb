@@ -40,9 +40,34 @@ Public Class Dataform
         Write(1, "$$")
         Write(1, DateTime.Now)
         Write(1, DateTime.Now.Millisecond)
-        Write(1, currentSample)
-        WriteLine(1)
+        WriteLine(1, currentSample)
         FileClose(1)
+    End Sub
+
+    Sub LoadData()
+        Dim choice As DialogResult
+        Dim fileNumber% = FreeFile()
+        Dim currentRecord$
+        Dim temp() As String
+        OpenFileDialog1.Filter = "log file (*.log)|*.log"
+        choice = OpenFileDialog1.ShowDialog()
+        If choice = DialogResult.OK Then
+            Try
+                FileOpen(fileNumber, OpenFileDialog1.FileName, OpenMode.Input)
+                Me.DataBuffer.Clear()
+                Do Until EOF(fileNumber)
+                    currentRecord = LineInput(fileNumber)
+                    temp = Split(currentRecord, ",")
+                    Me.DataBuffer.Enqueue(CInt(temp(temp.GetUpperBound(0))))
+                Loop
+                FileClose(fileNumber)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+
+        End If
+
     End Sub
 
     Sub GraphData()
@@ -85,6 +110,11 @@ Public Class Dataform
 
     Private Sub GraphTimer_Tick(sender As Object, e As EventArgs) Handles GraphTimer.Tick
         GetData()
+        GraphData()
+    End Sub
+
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+        LoadData()
         GraphData()
     End Sub
 End Class
