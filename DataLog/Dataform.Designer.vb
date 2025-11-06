@@ -22,6 +22,7 @@ Partial Class Dataform
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GraphPictureBox = New System.Windows.Forms.PictureBox()
         Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
         Me.ExitButton = New System.Windows.Forms.Button()
@@ -31,6 +32,7 @@ Partial Class Dataform
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.GraphTimer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.GraphPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ButtonGroupBox.SuspendLayout()
         Me.TopMenuStrip.SuspendLayout()
@@ -45,7 +47,7 @@ Partial Class Dataform
         Me.GraphPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.GraphPictureBox.Location = New System.Drawing.Point(12, 27)
         Me.GraphPictureBox.Name = "GraphPictureBox"
-        Me.GraphPictureBox.Size = New System.Drawing.Size(776, 271)
+        Me.GraphPictureBox.Size = New System.Drawing.Size(776, 316)
         Me.GraphPictureBox.TabIndex = 0
         Me.GraphPictureBox.TabStop = False
         '
@@ -118,6 +120,10 @@ Partial Class Dataform
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
+        'GraphTimer
+        '
+        Me.GraphTimer.Enabled = True
+        '
         'Dataform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -150,4 +156,5 @@ Partial Class Dataform
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents GraphTimer As Timer
 End Class
