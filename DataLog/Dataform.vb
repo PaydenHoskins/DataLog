@@ -1,4 +1,9 @@
-﻿Option Explicit On
+﻿'Payden Hoskins
+'RCET3371
+'FALL2025
+'https://github.com/PaydenHoskins/DataLog.git
+
+Option Explicit On
 Option Strict On
 
 Public Class Dataform
